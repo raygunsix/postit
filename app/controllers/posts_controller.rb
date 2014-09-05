@@ -43,4 +43,8 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :url, :description)
   end
 
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
 end
