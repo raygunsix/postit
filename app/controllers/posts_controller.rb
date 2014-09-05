@@ -28,7 +28,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update
+    if @post.update(post_params)
       flash[:post] = "You post was updated."
       redirect_to @post
     else
