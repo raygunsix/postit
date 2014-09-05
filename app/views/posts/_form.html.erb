@@ -1,0 +1,9 @@
+<%= form_for @post do |f| %>
+  <%= f.label :title, "Title" %>
+  <%= f.text_field :title %>
+  <%= f.label :url, "URL" %>
+  <%= f.text_field :url %>
+  <%= f.label :description, "Description" %>
+  <%= f.text_area :description %><br/>
+  <%= f.submit %>
+<% end %>
