@@ -1,8 +1,12 @@
 <% if @post.errors.any? %>
-  <h5>Please fix the following errors:</h5>
-  <% @post.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
+  <div class='row'>
+    <div class='alert alert-error span8'>
+    <h5>Please fix the following errors:</h5>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </div>
+  </div>
 <% end %>
 
 <%= form_for @post do |f| %>
