@@ -1,5 +1,8 @@
-<% @post.errors.full_messages.each do |msg| %>
-  <% flash[:post] = msg %>
+<% if @post.errors.any? %>
+  <h5>Please fix the following errors:</h5>
+  <% @post.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
 <% end %>
 
 <%= form_for @post do |f| %>
