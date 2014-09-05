@@ -1,3 +1,7 @@
+<% @post.errors.full_messages.each do |msg| %>
+  <% flash[:post] = msg %>
+<% end %>
+
 <%= form_for @post do |f| %>
   <%= f.label :title, "Title" %>
   <%= f.text_field :title %>
