@@ -23,6 +23,6 @@
       <%= f.label :description, "Description" %>
       <%= f.text_area :description, rows: 5 %>
     </div>
-    <%= f.submit class: 'btn btn-primary' %>
+    <%= f.submit(@post.new_record? ? 'Create Post' : 'Update Post', class: 'btn btn-primary') %>
   <% end %>
 </div>
