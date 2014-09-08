@@ -1,9 +1,9 @@
 <p class='pull-right'>
-  [<%= link_to "edit this category", edit_category_path(@category) %>]
+  [<%= link_to "edit this post", edit_post_path(@post) %>]
 </p>
 
 
-<%= render 'shared/content_title', title: @category.name %>
+<%= render 'shared/content_title', title: @post.title %>
 
 <p><%= @post.description %></p>
 
