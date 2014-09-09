@@ -3,4 +3,8 @@
 </p>
 
 
-<%= render 'shared/content_title', title: @category.name %>
+<%= render 'shared/content_title', title: "Showing Category: #{@category.name}" %>
+
+<% @category.posts.each do |post| %>
+  <%= render 'posts/post', post: post %>
+<% end %>
