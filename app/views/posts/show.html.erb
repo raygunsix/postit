@@ -2,9 +2,14 @@
   [<%= link_to "edit this post", edit_post_path(@post) %>]
 </p>
 
-
 <%= render 'shared/content_title', title: @post.title %>
 
 <p><%= @post.description %></p>
 
 <p><%= link_to @post.url %></p>
+
+<%= form_for [@post, @comment] do |f| %>
+  <%= f.label :body, "Leave a comment" %>
+  <%= f.text_area :body, rows: 5 %></br>
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
