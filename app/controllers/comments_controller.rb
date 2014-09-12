@@ -7,9 +7,12 @@ class CommentsController < ApplicationController
     @comment.creator = User.first # TODO avoid hard coding this
     @comment.post = @post
 
-    @comment.save
-    flash[:post] = "Your comment was added."
-    redirect_to @post
+    if @comment.save
+      flash[:post] = "Your comment was added."
+      redirect_to @post
+    else
+      render 'posts/show'
+    end
   end
 
   def post_params

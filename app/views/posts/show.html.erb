@@ -9,7 +9,10 @@
 <p><%= link_to @post.url %></p>
 
 <%= form_for [@post, @comment] do |f| %>
-  <%= f.label :body, "Leave a comment" %>
-  <%= f.text_area :body, rows: 5 %></br>
-  <%= f.submit class: 'btn btn-primary' %>
+  <%= render 'shared/errors', obj: @comment %>
+  <div class="control-group" >
+    <%= f.label :body, "Leave a comment" %>
+    <%= f.text_area :body, rows: 5, class: 'span4' %></br>
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
 <% end %>
