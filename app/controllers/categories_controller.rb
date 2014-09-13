@@ -17,7 +17,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(post_params)
 
     if @category.save
-      flash[:category] = "You category was saved."
+      flash[:notice] = "You category was saved."
       redirect_to categories_path
     else
       render :new
@@ -29,7 +29,7 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(post_params)
-      flash[:category] = "Your category was updated."
+      flash[:notice] = "Your category was updated."
       redirect_to categories_path
     else
       render :edit

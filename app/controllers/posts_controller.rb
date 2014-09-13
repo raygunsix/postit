@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
 
     if @post.save
-      flash[:post] = "You post was saved."
+      flash[:notice] = "You post was saved."
       redirect_to @post
     else
       render :new
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      flash[:post] = "You post was updated."
+      flash[:notice] = "You post was updated."
       redirect_to @post
     else
       render :edit
