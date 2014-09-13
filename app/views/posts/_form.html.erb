@@ -14,6 +14,10 @@
       <%= f.label :description, "Description" %>
       <%= f.text_area :description, rows: 5 %>
     </div>
+    <div class='control-group'>
+      <%= f.label :categories, "Categories" %>
+      <%= collection_check_boxes(:post, :category_ids, Category.all, :id, :name) %>
+    </div>
     <%= f.submit(@post.new_record? ? 'Create Post' : 'Update Post', class: 'btn btn-primary') %>
   <% end %>
 </div>
