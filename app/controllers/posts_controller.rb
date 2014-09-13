@@ -16,6 +16,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.creator = User.first # TODO remove this hard coded value
 
     if @post.save
       flash[:notice] = "You post was saved."
