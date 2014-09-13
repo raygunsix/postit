@@ -1,7 +1,5 @@
 <%= render 'shared/content_title', title: 'Posts' %>
 
 <% @posts.each do |post| %>
-  <ul>
-    <li><%= link_to post.title, post_path(post) %></li>
-  </ul>
+  <%= render 'posts/post', post: post %>
 <% end %>
