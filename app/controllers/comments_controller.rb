@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = Comment.new
     @comment.body = params[:comment][:body]
-    @comment.creator = User.first # TODO avoid hard coding this
+    @comment.creator = current_user
     @comment.post = @post
 
     if @comment.save
