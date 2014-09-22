@@ -10,7 +10,7 @@ PostitTemplate::Application.routes.draw do
   end
 
   resources :categories, except: :destroy
-  resources :users, only: [:new, :create]
+  resources :users, except: [:index, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
 
 end
