@@ -7,15 +7,15 @@
 </div>
 
 <ul class='nav nav-tabs'>
-  <li class='<%= 'active' if params[:tab].nil? %>'><%= link_to 'Posts', user_path(@user) %></li>
-  <li class='<%= 'active' if params[:tab] == 'comments' %>'><%= link_to 'Comments', user_path(@user) %></li>
+  <li class='<%= 'active' if params[:tab].nil? %>'><%= link_to 'Posts', user_path(@user, tab: 'posts') %></li>
+  <li class='<%= 'active' if params[:tab] == 'comments' %>'><%= link_to 'Comments', user_path(@user, tab: 'comments') %></li>
 </ul>
 
 <% if params[:tab].nil? || params[:tab] == 'posts' %>
   <% @user.posts.each do |post| %>
     <%= render 'posts/post', post: post %>
   <% end %>
-<% else %>
+<% elsif params[:tab] == 'comments' %>
   <% @user.comments.each do |comment| %>
     <%= render 'comments/comment', comment: comment %>
   <% end %>
