@@ -7,8 +7,8 @@
 </div>
 
 <ul class='nav nav-tabs'>
-  <li class='<%= 'active' if params[:tab].nil? || params[:tab] == 'posts'  %>'><%= link_to "Posts (#{@user.posts.count})", user_path(@user, tab: 'posts') %></li>
-  <li class='<%= 'active' if params[:tab] == 'comments' %>'><%= link_to "Comments  (#{@user.comments.count})", user_path(@user, tab: 'comments') %></li>
+  <li class='<%= 'active' if params[:tab].nil? || params[:tab] == 'posts'  %>'><%= link_to "Posts (#{@user.posts.size})", user_path(@user, tab: 'posts') %></li>
+  <li class='<%= 'active' if params[:tab] == 'comments' %>'><%= link_to "Comments  (#{@user.comments.size})", user_path(@user, tab: 'comments') %></li>
 </ul>
 
 <% if params[:tab].nil? || params[:tab] == 'posts' %>
