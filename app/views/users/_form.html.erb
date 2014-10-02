@@ -10,6 +10,6 @@
       <%= f.label :password, "Password" %>
       <%= f.text_field :password %>
     </div>
-    <%= f.submit "Update Profile", class: 'btn btn-primary' %>
+    <%= f.submit @user.new_record? ? "Register" : "Update Profile", class: 'btn btn-primary' %>
   <% end %>
 </div>
