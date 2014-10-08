@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update]
+  before_filter :require_user, :only => [:create, :update, :edit, :new]
 
 
   def index
