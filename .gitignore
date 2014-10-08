@@ -17,4 +17,6 @@
 /tmp
 
 # other files
+.DS_Store
 .ruby-version
+postit.sublime-workspace
