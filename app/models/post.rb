@@ -6,4 +6,20 @@ class Post < ActiveRecord::Base
   has_many :votes, as: :voteable
 
   validates :title, presence: true
+
+
+  def total_votes
+    up_votes - down_votes
+  end
+
+  private
+
+  def up_votes
+    self.votes.where(vote: true).size
+  end
+
+  def down_votes
+    self.votes.where(vote: false).size
+  end
+
 end
