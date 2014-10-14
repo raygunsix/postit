@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update]
-  before_filter :require_user, :only => [:create, :update, :edit, :new]
+  before_action :set_post, only: [:show, :edit, :update, :vote]
+  before_filter :require_user, :only => [:create, :update, :edit, :new, :vote]
 
   def index
     @posts = Post.all
@@ -31,11 +31,21 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      flash[:notice] = "You post was updated."
+      flash[:notice] = "Your post was updated."
       redirect_to @post
     else
       render :edit
     end
+  end
+
+  def vote
+    @vote = Vote.new(vote: params[:type], creator: current_user, voteable: @post)
+    if @vote.save
+      flash[:notice] = "Your vote was counted."
+    else
+      flash[:error] = "Your vote was not counted. Please try again."
+    end
+    redirect_to :back
   end
 
   private
