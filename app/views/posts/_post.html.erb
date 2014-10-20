@@ -1,12 +1,12 @@
 <div class='row'>
   <div class='span1 well text-center'>
-    <%= link_to vote_post_path(post, type: true), method: :post do %>
+    <%= link_to vote_post_path(post, vote: true), method: :post do %>
       <i class='icon-arrow-up'></i>
     <% end %>
     <br/>
     <%= post.total_votes %> votes
     <br/>
-    <%= link_to vote_post_path(post, type: false), method: :post do %>
+    <%= link_to vote_post_path(post, vote: false), method: :post do %>
       <i class='icon-arrow-down'></i>
     <% end %>
   </div>
