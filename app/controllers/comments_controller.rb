@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :require_user, :only => [:create]
+  before_filter :require_user, :only => [:create, :vote]
 
   def create
     @post = Post.find(params[:post_id])
@@ -14,6 +14,17 @@ class CommentsController < ApplicationController
     else
       render 'posts/show'
     end
+  end
+
+  def vote
+    @comment = Comment.find(params[:id])
+    @vote = Vote.new(vote: params[:vote], creator: current_user, voteable: @comment)
+    if @vote.save
+      flash[:notice] = "Your vote was counted."
+    else
+      flash[:error] = "Your vote was not counted. Please try again."
+    end
+    redirect_to :back
   end
 
   def post_params
