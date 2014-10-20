@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_filter :require_user, :only => [:create, :update, :edit, :new, :vote]
 
   def index
-    @posts = Post.all
+    @posts = Post.all.sort_by{|x| x.total_votes}.reverse
   end
 
   def show
