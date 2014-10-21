@@ -7,7 +7,6 @@ class Post < ActiveRecord::Base
 
   validates :title, presence: true
 
-
   def total_votes
     up_votes - down_votes
   end
