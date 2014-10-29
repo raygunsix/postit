@@ -7,8 +7,18 @@ class Post < ActiveRecord::Base
 
   validates :title, presence: true
 
+  before_save :generate_slug
+
   def total_votes
     up_votes - down_votes
+  end
+
+  def generate_slug
+    self.slug = self.title.parameterize
+  end
+
+  def to_param
+    self.slug
   end
 
   private
