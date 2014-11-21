@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
         # send pin twilio
         redirect_to pin_path
       else
-        login_successful(user)
+        login_user!(user)
       end
     else
       flash[:error] = 'Invalid username or password'
@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
       user = User.find_by(pin: params[:pin])
       if user
         user.remove_pin!
-        login_successful(user)
+        login_user!(user)
       else
         flash[:error] = 'Your PIN was incorrect. Please try again.'
         redirect_to pin_path
@@ -38,7 +38,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def login_successful(user)
+  def login_user!(user)
     session[:user_id] = user.id
     flash[:notice] = 'You are logged in'
     redirect_to root_path
