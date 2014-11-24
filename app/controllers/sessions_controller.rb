@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       if user.two_factor_auth?
+        session[:two_factor] = true
         user.generate_pin!
         # send pin twilio
         redirect_to pin_path
@@ -26,9 +27,11 @@ class SessionsController < ApplicationController
   end
 
   def pin
+    access_denied if session[:two_factor].nil?
     if request.post?
       user = User.find_by(pin: params[:pin])
       if user
+        session[:two_factor] = nil
         user.remove_pin!
         login_user!(user)
       else
