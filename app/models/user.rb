@@ -24,6 +24,20 @@ class User < ActiveRecord::Base
     self.update_column(:pin, nil)
   end
 
+  def send_pin_to_twillio
+    # set up a client to talk to the Twilio REST API
+    client = Twilio::REST::Client.new(
+      ENV['twillio_account_sid'],
+      ENV['twillio_auth_token']
+    )
+
+    sms = client.account.sms.messages.create(
+      :body => "Please enter your PIN to login: #{self.pin}",
+      :to => "+14108675309",
+      :from => "+15005550006"
+    )
+  end
+
   def admin?
     self.role == "admin"
   end
