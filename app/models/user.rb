@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 
     sms = client.account.sms.messages.create(
       :body => "Please enter your PIN to log in: #{self.pin}",
-      :to => "+14108675309",
+      :to => "+14108675309", # TODO send to user.phone
       :from => "+15005550006"
     )
   end
