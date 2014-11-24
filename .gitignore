@@ -20,3 +20,6 @@
 .DS_Store
 .ruby-version
 postit.sublime-workspace
+
+# Ignore application configuration
+/config/application.yml

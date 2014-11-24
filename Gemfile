@@ -24,6 +24,7 @@ group :development do
   gem 'quiet_assets'
   gem 'pry'
   gem 'sqlite3'
+  gem "figaro"
 end
 
 group :production do
